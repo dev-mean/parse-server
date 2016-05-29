@@ -7,10 +7,11 @@ var path = require('path');
 
 
 var api = new ParseServer({
-  databaseURI: 'mongodb://localhost:27017/dev',
+  databaseURI: 'mongodb://localhost:27017/popii_parse',
   cloud:  __dirname + '/cloud/main.js',
-  appId: 'myAppId',
-  masterKey:'', //Add your master key here. Keep it secret!
+  appId: '63ptxDF1N5amy1qBh3j8aXvxDGIdqzsYCiSqXiNE',
+  masterKey:'0rEa7v3ZGugDGIocClYDyjEkGGbWjmnQLhoNDVX2', //Add your master key here. Keep it secret!
+  javascriptKey:'IqhXk8haw1vDOoBzyYJ1RnOcF3HTcmgB2e5xmxA8',
   serverURL: 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
