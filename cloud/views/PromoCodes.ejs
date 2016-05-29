@@ -1,0 +1,127 @@
+<script type="text/javascript">
+function deletePromoCode(id)
+{
+if(confirm('Are you sure to delete this PromoCode ?'))
+    {
+       $.ajax({
+            type: "get",
+            url: "/PromoCodes/del/"+id,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+                window.location.reload();
+            },
+            error: function() {
+	    alert('error while deleting!!');
+	    }
+        });
+	}
+}
+function editPromoCode(id)
+{
+    $.ajax({
+        type: "get",
+        url: "/PromoCodes/list/"+id,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data) {
+		console.log(data.objectId);
+			$("#objectId").val(data.objectId);
+            $("#PromoCode").val(data.PromoCode);
+            $("#AmountType").val(data.AmountType);
+            $("#Value").val(data.Value);
+        },
+        error: function() {
+            alert('error while editing!!');
+        }
+    });
+}
+function savePromoCode()
+{
+var self = this;
+if(self.$("[name=objectId]").val()=="0")
+	{
+	 $.post("/PromoCodes", {
+      PromoCode: self.$("[name=PromoCode]").val(),
+	    AmountType: self.$("[name=AmountType]").val(),
+      Value: self.$("[name=Value]").val()
+        }, function(data) {
+          window.location.reload();
+        });
+	}
+	else
+	{
+	$.post("/PromoCodes/"+self.$("#objectId").val(), {
+      PromoCode: self.$("[name=PromoCode]").val(),
+	    AmountType: self.$("[name=AmountType]").val(),
+      Value: self.$("[name=Value]").val()
+        }, function(data) {
+	console.log('edit call');
+          window.location.reload();
+        });
+	}
+}
+
+</script>
+<script language="javascript" type="text/javascript">
+        function printDiv(divID) {
+            //Get the HTML of div
+            var divElements = document.getElementById(divID).innerHTML;
+            //Get the HTML of whole page
+            var oldPage = document.body.innerHTML;
+
+            //Reset the page's HTML with div's HTML only
+            document.body.innerHTML = 
+              "<html><head><title></title></head><body>" + 
+              divElements + "</body>";
+
+            //Print Page
+            window.print();
+
+            //Restore orignal HTML
+            document.body.innerHTML = oldPage;
+
+          
+        }
+    </script>
+<form id="form1" runat="server">
+    <div id="printablediv" style="width: 100%; background-color: Blue; height: 200px">
+        Print me I am in 1st Div
+    </div>
+    <div id="donotprintdiv" style="width: 100%; background-color: Gray; height: 200px">
+        I am not going to print
+    </div>
+    <input type="button" value="Print 1st Div" onclick="javascript:printDiv('printablediv')" />
+    </form>
+<ul><li><a href="/home" >Back</a></li><li><a href="/logout" >Logout</a></li></ul>
+  <div class="outer">
+    <div>
+      <h1>Categories Management</h1>
+      <input id="objectId" name="objectId" type="hidden" value="0"><br>
+      <input type="text" id="PromoCode" name="PromoCode" value="" placeholder="Enter Promo Code please?" /><br>
+      <input type="text" id="AmountType" name="AmountType" value="$" placeholder="Please Enter AmountType" /><br>
+      
+      <input type="text" id="Value" name="Value"  value="" placeholder="Please Enter Value" /><br>
+	  <button type="submit" id="save" OnClick="savePromoCode()">Save</button>
+    </div>  
+  </div>
+<div id="image_list">
+<table class="CSSTableGenerator">
+<tr><td>S.No.</td><td>PromoCode</td><td>AmountType</td><td>Value</td><td>Delete</td><td>Edit</td></tr>
+  <% 
+  var i=0;
+  _(PromoCodes).each(function(PromoCode) { 
+  i++;
+  %>
+    <tr>
+      <td><%= i %></td>
+      <td><%= PromoCode.get('PromoCode') %></td>
+      <td><%= PromoCode.get('AmountType') %></td>
+      
+      <td><%= PromoCode.get('Value') %></td>
+      <td><input type="button" id="delete" title="delete" value="delete" onClick="deletePromoCode('<%= PromoCode.id %>')" /></td>
+      <td><input type="button" id="edit" title="edit" value="edit" onClick="editPromoCode('<%= PromoCode.id %>')" /></td>
+    </tr>
+  <% }); %>
+</table>
+</div>
