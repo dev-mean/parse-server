@@ -33,9 +33,9 @@ app.set('views', 'views');  // Specify the folder to find templates
 app.set('view engine', 'ejs');    // Set the template engine
 app.use(expressLayouts);          // Use the layout engine for express
 app.use(parseExpressHttpsRedirect());    // Automatically redirect non-secure urls to secure ones
-app.use(express.bodyParser());    // Middleware for reading request body
-app.use(express.methodOverride());
-app.use(express.cookieParser('SECRET_SIGNING_KEY'));
+/*app.use(express.bodyParser());    // Middleware for reading request body
+//app.use(express.methodOverride());
+//app.use(express.cookieParser('SECRET_SIGNING_KEY'));
 app.use(parseExpressCookieSession({
   fetchUser: true,
   key: 'image.sess',
@@ -43,7 +43,7 @@ app.use(parseExpressCookieSession({
     maxAge: 3600000 * 24 * 30
   }
 }));
-
+*/
 
 app.locals._ = require('underscore');
 var PromoCodes = Parse.Object.extend("PromoCodes");
