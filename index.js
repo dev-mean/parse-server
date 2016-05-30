@@ -14,7 +14,7 @@ var api = new ParseServer({
   javascriptKey:'IqhXk8haw1vDOoBzyYJ1RnOcF3HTcmgB2e5xmxA8',
   serverURL: 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
-    classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
+    classNames: ["Products", "Shows"] // List of classes to support for query subscriptions
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
@@ -30,10 +30,10 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
 var mountPath =  '/parse';
 app.use(mountPath, api);
 
-// Parse Server plays nicely with the rest of your web routes
+/* Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
   res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
-});
+});*/
 
 // There will be a test page available on the /test path of your server url
 // Remove this before launching your app
