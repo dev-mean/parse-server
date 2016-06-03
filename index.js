@@ -10,7 +10,7 @@ var path = require('path');
 
 
 var api = new ParseServer({
-  databaseURI: 'mongodb://localhost:27017/popii_parse',
+  databaseURI: 'mongodb://localhost:27017/popii_dev',
   cloud:  __dirname + '/cloud/main.js',
   appId: 'Nw47gz5W9KvrZMxKCaFV6GGfwBw4kC4BkFz4EB7f',
   masterKey:'6UzqOhby6pmAqyipt7xcgiNtlnDJkhUioB1lm6JW', //Add your master key here. Keep it secret!
