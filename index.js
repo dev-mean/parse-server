@@ -14,7 +14,7 @@ var api = new ParseServer({
   cloud:  __dirname + '/cloud/main.js',
   appId: 'Nw47gz5W9KvrZMxKCaFV6GGfwBw4kC4BkFz4EB7f',
   masterKey:'6UzqOhby6pmAqyipt7xcgiNtlnDJkhUioB1lm6JW', //Add your master key here. Keep it secret!
-  javascriptKey:'HZCSf3Kt6hxb9sENGuFEp17EAjOZuL7hpFc1PaCY',
+  javascriptKey:'IxR9CyMXcCSgvzglLIBKMFUJMdPhtQEFljr4l3IJ',
   restAPIKey:'akV3idRdPE3tzV8KBEkeL6Q2GDj5zPnswBlb9laO',
   fileKey:'1f508bb2-6ecd-4791-a17b-6c78a3f0f832',
   serverURL: 'http://localhost:1337/parse',  // Don't forget to change to https if needed

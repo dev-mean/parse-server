@@ -1,0 +1,1 @@
+{"level":"error","message":"Uncaught internal server error. Trying to send a reset password but no adapter is set undefined","timestamp":"2016-08-25T22:11:30.267Z"}
